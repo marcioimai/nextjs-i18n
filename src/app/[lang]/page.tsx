@@ -1,31 +1,56 @@
 import { headers } from "next/dist/client/components/headers";
-import Image from "next/image";
 import Link from "next/link";
 import { getDictionary } from "./dictionaries";
+import { US, BR, ES } from "country-flag-icons/react/3x2";
 
-const locales = ["en-US", "pt-BR"];
+const locales = [
+  {
+    label: "en-US",
+    icon: <US height={12} width={18} />,
+  },
+  {
+    label: "pt-BR",
+    icon: <BR height={12} width={18} />,
+  },
+  {
+    label: "es-ES",
+    icon: <ES height={12} width={18} />,
+  },
+];
 
 export default async function Home({ params }: { params: { lang: string } }) {
   const dict = await getDictionary(params.lang as "pt-BR" | "en-US"); // en
   const acceptLanguage = headers().get("accept-language");
   const userlang = acceptLanguage?.split(";")[0]?.split(",")[0];
+
   return (
-    <>
-      <div>
-        {locales.map((locale) => (
-          <div key={locale}>
-            <Link href={`/${locale}`}>{locale}</Link>
-          </div>
-        ))}
+    <div className="flex flex-col items-center">
+      <div className="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1 my-8">
+        {locales.map((locale) => {
+          const styles =
+            params.lang === locale.label
+              ? "text-blue-500 bg-white shadow-sm"
+              : "text-gray-500 hover:text-gray-700";
+          return (
+            <Link key={locale.label} href={`/${locale.label}`} passHref>
+              <button
+                className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm focus:relative ${styles}`}
+              >
+                {locale.icon}
+                {locale.label}
+              </button>
+            </Link>
+          );
+        })}
       </div>
-      <div>
-        <div>
+      <div className="flex flex-col items-center">
+        <p>
           {dict.userlang}: {userlang}
-        </div>
-        <div>
+        </p>
+        <p>
           {dict.currlang}: {params.lang}
-        </div>
+        </p>
       </div>
-    </>
+    </div>
   );
 }

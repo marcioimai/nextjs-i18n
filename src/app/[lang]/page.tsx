@@ -43,7 +43,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
           );
         })}
       </div>
-      <p className="text-center mt-8">
+      <p className="text-center mt-6">
         {dict.welcome}
         <br />
         <br />

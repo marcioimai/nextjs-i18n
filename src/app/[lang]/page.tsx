@@ -24,8 +24,8 @@ export default async function Home({ params }: { params: { lang: string } }) {
   const userlang = acceptLanguage?.split(";")[0]?.split(",")[0];
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1 my-8">
+    <div className="max-w-sm flex flex-col items-center mx-auto my-8">
+      <div className="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
         {locales.map((locale) => {
           const styles =
             params.lang === locale.label
@@ -43,14 +43,17 @@ export default async function Home({ params }: { params: { lang: string } }) {
           );
         })}
       </div>
-      <div className="flex flex-col items-center">
-        <p>
-          {dict.userlang}: {userlang}
-        </p>
-        <p>
-          {dict.currlang}: {params.lang}
-        </p>
-      </div>
+      <p className="text-center mt-8">
+        {dict.welcome}
+        <br />
+        <br />
+        {dict.description}
+        <br />
+        <br />
+        {dict.userlang}: {userlang}
+        <br />
+        {dict.currlang}: {params.lang}
+      </p>
     </div>
   );
 }

@@ -1,4 +1,7 @@
 {
+  "welcome": "Welcome!",
+  "description": "The pathname and content of the application should change automatically according to the user's preference.",
+  "choose": "Choose below:",
   "userlang": "Your language",
   "currlang": "Current language"
 }

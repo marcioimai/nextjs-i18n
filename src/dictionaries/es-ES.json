@@ -1,4 +1,7 @@
 {
+  "welcome": "Bien venido!",
+  "description": "La dirección y el contenido de la aplicación deben cambiarse automáticamente según la preferencia del usuario.",
+  "choose": "Elija a continuación:",
   "userlang": "Su idioma",
   "currlang": "Idioma actual"
 }

@@ -11,7 +11,7 @@ export const metadata = {
 export const generateStaticParams =
   process.env.NODE_ENV !== "development"
     ? async () => {
-        return [{ lang: "en-US" }, { lang: "pt-BR" }];
+        return [{ lang: "en-US" }, { lang: "pt-BR" }, { lang: "es-ES" }];
       }
     : undefined;
 
